@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=ForumName%></title>
+    <link rel="stylesheet" href="result.css"> <!-- Include your CSS file here -->
+    <div class="forum-container">
+        <section class="forum-section">
+            <h2>Latest Threads</h2>
+    
+            <!-- Code to display the Thread -->
+            <% listOfPosts.forEach(post => { %>
+            <div class="thread">
+                <li>
+                <h3 class="thread-title"><%=post.name%></h3>
+                <p class="thread-meta">Posted by <%=post.username%></p>
+                <p class="thread-content"><%=post.content%></p>
+                </li>
+            </div>
+            <% }); %>
+        </section>  
+
+</head>
+<body>

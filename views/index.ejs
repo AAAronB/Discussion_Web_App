@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=ForumName%></title>
+    <link rel="stylesheet" href="main.css"> <!-- Include your CSS file here -->
+</head>
+<body>
+
+<header class="header">
+    <h1>Forum App</h1>
+    <!-- Add navigation links if needed -->
+    <nav class="navbar">
+        <a href="register">Become a registered user!</a>
+        <a href="displayPost">Display Posts on <%=ForumName%></a>
+        <a href="about">About <%=ForumName%></a>
+        <a href="displayUser">Show all Users on <%=ForumName%></a>
+        <a href="searchUser">Search for a post from any user</a>
+        <a href="searchTopic">Search for a post from a topic</a>
+        <a href="deletePost">Delete a Post</a>
+    </nav>
+</header>
+
+    <!-- Add other sections and features as needed -->
+
+    <section class="form-container">
+        <h2>Create a New Thread</h2>
+        <form action="/postadded" method="post">
+            <div class="form-group">
+                <label for="title">Thread Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+                <div class="form-group">
+                <label for="topic">Topic of Thread:</label>
+                <input type="text" id="topic" name="topic" required>
+                </div>
+                <div class="form-group">
+                <label for="username">Enter your username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="Post_content">Thread Content:</label>
+                <textarea id="Post_content" name="Post_content" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Post Thread</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+</body>
+</html>

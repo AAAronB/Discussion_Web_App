@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search result </title>
+    <link rel="stylesheet"  type="text/css" href="result.css" />
+  </head>
+  <body>
+    <h1>You Searched for:</h1>
+    <% listOfPosts.forEach(post => { %>
+        <li><%=post.name%>, <%=post.topic%>, <%=post.first_name%>, <%=post.last_name%></li> <!--Uses the object List of Posts and loops through the array to display the first_name, last_name, topic of the post, name of the post that are all associated to the user.-->
+    <% }); %>
+  </body>
+</html>

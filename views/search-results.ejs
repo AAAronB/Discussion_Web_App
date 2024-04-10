@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search result </title>
+    <link rel="stylesheet"  type="text/css" href="result.css" />
+  </head>
+  <body>
+    <h1>You Searched for:</h1>
+    <% listOfPosts.forEach(post => { %>
+        <li><%=post.name%>, <%=post.username%></li> <!--Uses the object List of Posts and loops through the array to display the name of the post and the username of the account that created the post.-->
+    <% }); %>
+  </body>
+</html>

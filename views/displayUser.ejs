@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+  <head>
+    <title>List of Users on <%=ForumName%></title> <!--Title of the Webpage-->
+    <link rel="stylesheet"  type="text/css" href="result.css" />
+  </head>
+  <body>
+    <h1>List of Users on <%=ForumName%></h1> <!--Header at the top of the webpage.-->
+    <p>Here are our users:</p>
+    <% listOfUsers.forEach(user => { %>
+      <li><%=user.first_name%> <%=user.last_name%>, <%=user.username%>, <%=user.email%></li> <!--Uses the object List of Users and loops through the array to display the first_name, last_name, username, email.-->
+    <% }); %>
+  </body>
+</html>

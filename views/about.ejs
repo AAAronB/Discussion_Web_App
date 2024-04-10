@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>About <%=ForumName%></title> 
+    <link rel="stylesheet"  type="text/css" href="result.css" />
+  </head>
+  <body>
+    <h1>About <%=ForumName%></h1> <!--Displays this text at the top of the page.-->
+    <p>This is a forum page created for people.</p> 
+    <section class="forum-section">
+      <h2>List of Topics</h2>
+
+      <!-- Example Thread -->
+      <% listOfPosts.forEach(post => { %>
+      <div class="thread">
+          <li>
+          <h3 class="thread-title"><%=post.topic%></h3>
+          </li>
+      </div>
+      <% }); %>
+  </section>  
+
+  </body>
+</html>

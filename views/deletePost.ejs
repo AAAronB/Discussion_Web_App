@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Search <%=ForumName%></title>
+    <link rel="stylesheet"  type="text/css" href="register.css" />
+  </head>
+  <body>
+    <h1>Search <%=ForumName%></h1>
+    <form action="/post-deleted" method="GET"> <!--Uses a form to render the search bar and upon hitting the submit input the action then takes
+    us to the search result page where are have a get method to retrieve the data and display on HTML.-->
+      <p>Write the name of a post you would like to delete:</p>
+      <input id="search-box" type="text" name="keyword" value="Default"> <!--We have search bar that saves what is inputted and outputs the results by referencing the keyword
+      as req.query.keyword.-->
+      <input type="submit" value="Delete" >
+    </form>
+  </body>
+</html>
