@@ -1,14 +1,14 @@
 <!doctype html>
 <html>
   <head>
-    <title> Delete a post in <%=ForumName%></title>
+    <title>Delete a user in <%=ForumName%></title>
     <link rel="stylesheet"  type="text/css" href="register.css" />
   </head>
   <body>
-    <h1> Delete a post in <%=ForumName%></h1>
-    <form action="/post-deleted" method="GET"> <!--Uses a form to render the search bar and upon hitting the submit input the action then takes
+    <h1>Delete a user in <%=ForumName%></h1>
+    <form action="/user-deleted" method="GET"> <!--Uses a form to render the search bar and upon hitting the submit input the action then takes
     us to the search result page where are have a get method to retrieve the data and display on HTML.-->
-      <p>Write the name of a post you would like to delete:</p>
+      <p>Write the name of the user you wish to delete:</p>
       <input id="search-box" type="text" name="keyword" value="Default"> <!--We have search bar that saves what is inputted and outputs the results by referencing the keyword
       as req.query.keyword.-->
       <input type="submit" value="Delete" >

@@ -1,30 +1,38 @@
 module.exports = function(app, ForumData) {
 
   // Handle our routes
+    app.get('/register', function (req,res) {
+    res.render('register.ejs', ForumData);
+  });
+  app.post('/registered', function (req,res) {
+    if (req.body.username === 'Enter your username'){
+      res.redirect('/login');
+      return;}
+    // saving data in database and outputting it to the screen
+    let addquery = "INSERT INTO users(first_name,last_name,username,password,email) VALUES" + "('" + req.body.first + "','" + req.body.last + "','" + req.body.username + "','"+ req.body.password+ "','" + req.body.email +"');"; 
+    // adds a user's details to the database
+    db.query(addquery, (err, result) => {
+        if (err) {
+            return console.error(err.message); // returns an error message if the query fails
+         }else{
+          res.redirect('./');
+         }
+    });  
+  });
   function isLoggedIn(req, res, next) {
     if (req.session.user) {
     next();
     } else {
-    res.redirect('/login');
+    res.redirect('/register');
     }
 }
   app.get('/', isLoggedIn, (req, res) => {
-    res.redirect('/index');
+    res.render('index.ejs',ForumData)
   });
   
   // Login page
   app.get('/login', (req, res) => {
-    res.send(`
-      <form method="post" action="/login">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-      </form>
-    `);
+    res.render('login.ejs',ForumData);
   });
   
   // Logout route
@@ -50,16 +58,18 @@ module.exports = function(app, ForumData) {
       // Store user in session
       req.session.user = user;
       res.redirect('/');
-    } else {
+    } else if (req.body.username === ''){
+      res.redirect('/register');}
+      else {
       res.send('Invalid credentials. <a href="/login">Try again</a>');
     }
     })
   });
-  
-  app.get('/index',function(req,res){
-    res.render('index.ejs',ForumData)
+
+  app.get('/index', (req, res) => {
+    res.render('index.ejs',ForumData);
   });
-  
+
   app.get('/about',function(req,res){
     let sqlquery = "SELECT topic FROM Post"; // query database to get all the posts
     // execute sql query
@@ -83,26 +93,9 @@ module.exports = function(app, ForumData) {
         // to the database
       }
       else {
-        res.send('Post added');
-        // Message to verify that the post has been added to the database
+        res.redirect('/index');
       }
     });
-  });
-  app.get('/register', function (req,res) {
-    res.render('register.ejs', ForumData);
-  });
-  app.post('/registered', function (req,res) {
-    // saving data in database and outputting it to the screen
-    let addquery = "INSERT INTO users(first_name,last_name,username,email) VALUES" + "('" + req.body.first + "','" + req.body.last + "','" + req.body.username + "','" + req.body.email +"');"; 
-    // adds a user's details to the database
-    db.query(addquery, (err, result) => {
-        if (err) {
-            return console.error(err.message); // returns an error message if the query fails
-         }else{
-            res.send(' Hello '+ req.body.first + ' '+ req.body.last +' you are now registered!  We will send an email to you at ' + req.body.email); 
-            // Output lets us know that the user has been successfully added to the database
-         }
-    });  
   });
   app.get('/displayPost', function(req, res) {
     let sqlquery = "SELECT name,topic,username,content FROM Post"; // query database to get the name of post, the topic of the post, the username and the content of the post
@@ -165,8 +158,21 @@ module.exports = function(app, ForumData) {
     // execute sql query
     db.query(sqlquery, (err, result) => {
         if (err) {
-            res.redirect('./'); // redirects to the home page if the query fails 
-        } else {res.send("Post Deleted.");}
+            res.send('Failed to delete, try again. <a href="/deletePost">Try again</a>'); // redirects to the home page if the query fails 
+        } else {res.redirect('/');}
      });
+  });
+  app.get('/deleteUser',function(req,res){
+    res.render("deleteUser.ejs", ForumData);
+  });
+  app.get('/user-deleted', function (req, res) {
+    //searching in the database
+    let sqlquery = "DELETE FROM Users WHERE Users.username LIKE"+"'%"+req.query.keyword+"%'"; // query database the keyword where it searches for the post
+    // execute sql query
+    db.query(sqlquery, (err, result) => {
+      if (err) {
+        res.send('Failed to delete, try again. <a href="/deleteUser">Try again</a>'); // redirects to the home page if the query fails 
+      } else {res.redirect('/');}
+    });
   });
 }

@@ -1,5 +1,7 @@
 body {
     font-family: Arial, sans-serif;
+    background-image: url('https://media.tenor.com/7K7XClkBpg8AAAAC/typing-chatting.gif');
+    background-size: cover;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
@@ -39,5 +41,17 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+button{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+} 
+
+button:hover{
     background-color: #45a049;
 }

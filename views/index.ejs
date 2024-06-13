@@ -12,27 +12,28 @@
     <h1>Forum App</h1>
     <!-- Add navigation links if needed -->
     <nav class="navbar">
-        <a href="register">Become a registered user!</a>
         <a href="displayPost">Display Posts on <%=ForumName%></a>
         <a href="about">About <%=ForumName%></a>
         <a href="displayUser">Show all Users on <%=ForumName%></a>
         <a href="searchUser">Search for a post from any user</a>
         <a href="searchTopic">Search for a post from a topic</a>
         <a href="deletePost">Delete a Post</a>
+        <a href ="login">Logout</a>
+        <a href="deleteUser">Delete a user on <%=ForumName%></a>
     </nav>
 </header>
 
     <!-- Add other sections and features as needed -->
 
     <section class="form-container">
-        <h2>Create a New Thread</h2>
+        <h2>Create a New Post</h2>
         <form action="/postadded" method="post">
             <div class="form-group">
-                <label for="title">Thread Title:</label>
+                <label for="title">Post Title:</label>
                 <input type="text" id="title" name="title" required>
             </div>
                 <div class="form-group">
-                <label for="topic">Topic of Thread:</label>
+                <label for="topic">Topic of Post:</label>
                 <input type="text" id="topic" name="topic" required>
                 </div>
                 <div class="form-group">
@@ -40,11 +41,11 @@
                 <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
-                <label for="Post_content">Thread Content:</label>
+                <label for="Post_content">Post Content:</label>
                 <textarea id="Post_content" name="Post_content" rows="4" required></textarea>
             </div>
             <div class="form-group">
-                <button type="submit">Post Thread</button>
+                <button type="submit">Submit a Post</button>
             </div>
         </form>
     </section>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+  <head>
+    <title> Log in to <%=ForumName%></title> 
+    <link rel="stylesheet"  type="text/css" href="register.css" />
+  </head>
+  <body>
+    <h1> Log in to <%=ForumName%></h1>
+    <form method="post" action="/login">
+        <label for="username">Username:</label>
+        <p><input type="text" id="username" name="username"></p>
+        <label for="password">Password:</label>
+        <p><input type="password" id="password" name="password"></p>
+        <p><input type="submit" value="Login">
+        <a href="register"></a><button>Register a new account</button></a></p>
+      </form>
+      
